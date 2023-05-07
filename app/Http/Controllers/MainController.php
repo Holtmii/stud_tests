@@ -11,18 +11,24 @@ use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
-    public function user() {
+    public function user(Request $request) {
+        if($request->query('user_role') != null and $request->query('super_user') != null)
+            $user = DB::table('users')
+                ->select(DB::raw('users.*, groups.name as group_name'))
+                ->leftJoin('groups', 'users.id_group', '=', 'groups.id')
+                ->where('role_pers', '=', $request->query('user_role'))
+                ->where('role_superuser', '=', $request->query('super_user'))
+                ->get();
+        else
+            $user = DB::table('users')
+                ->select(DB::raw('users.*, groups.name as group_name'))
+                ->leftJoin('groups', 'users.id_group', '=', 'groups.id')
+                ->get();
+
         $groups = DB::table('groups')->get();
 
-        $user = DB::table('users')
-            ->select(DB::raw('users.*, groups.name as group_name'))
-            ->leftJoin('groups', 'users.id_group', '=', 'groups.id')
-            ->get();
-
         return view('user', compact('user'), compact('groups'));
-
     }
-
 
 
     public function user_create(Request $request) {
@@ -32,9 +38,9 @@ class MainController extends Controller
     }
 
 
-    public function discipline() {
-        return view('discipline');
-    }
+//    public function discipline() {
+//        return view('discipline');
+//    }
 
     public function discipline_teach() {
         $disciplines = DB::table('disciplines')->get();
@@ -42,18 +48,18 @@ class MainController extends Controller
         return View('discipline.index', compact('disciplines'), compact('users'));
     }
 
-    public function group() {
-        return view('group');
-    }
+//    public function group() {
+//        return view('group');
+//    }
 
 
-    public function group_create(Request $request)
-    {
-        $group = new Group();
-
-        $group->name = $request->input('name');
-        $group->save();
-        return Redirect('user');
-    }
+//    public function group_create(Request $request)
+//    {
+//        $group = new Group();
+//
+//        $group->name = $request->input('name');
+//        $group->save();
+//        return Redirect('user');
+//    }
 
 }

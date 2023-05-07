@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,19 +24,17 @@ Route::get('/group', [App\Http\Controllers\MainController::class, 'group'] );
 
 Route::post('/user', [App\Http\Controllers\MainController::class, 'user_create'] )->name('user');
 
-Route::post('', [App\Http\Controllers\MainController::class, 'group_create'] )->name('group_create');
+Route::post('group_create', [App\Http\Controllers\MainController::class, 'group_create'] )->name('group_create');
 
 Route::resource('discipline', App\Http\Controllers\DisciplineController::class);
 
 Route::resource('subject_teach', App\Http\Controllers\SubjectTeachController::class);
 
-
-
-// Route::get('/about', function() {
-//     return view ('about');
-// });
+Route::post('discipline_group', [App\Http\Controllers\DisciplineController::class, 'discipline_group'])->name('discipline_group');
 
 Route::get('/', [App\Http\Controllers\Auth\LoginController::class, 'showLoginForm']);
+
+Route::resource('group', App\Http\Controllers\GroupController::class);
 
 Auth::routes();
 

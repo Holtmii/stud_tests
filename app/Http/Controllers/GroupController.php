@@ -3,34 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Discipline;
-use App\Models\Group_Discipline;
-use App\Models\User;
+use App\Models\Group;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\View\View;
 
-class DisciplineController extends Controller
+class GroupController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-//        $disciplines = DB::table('disciplines')->get();
-
-        $disciplines = DB::table('disciplines')
-            ->select(DB::raw('disciplines.*, users.surname as user_surname, users.name as user_name, users.middlename as user_middlename'))
-            ->leftJoin('users', 'disciplines.id_user', '=', 'users.id')
-            ->get();
 
         $groups = DB::table('groups')->get();
-        $users = DB::table('users')->where('role_pers', '=', '1')->get();
-        return View('discipline.index', compact(['disciplines', 'users', 'groups']));
-    }
-
-    public function discipline_group(Request $request){
-        Group_Discipline::create($request->all());
-        return Redirect('discipline');
+        $users = DB::table('users')->orderBy('surname')->get();
+//            DB::select('select id_group, GROUP_CONCAT(fio SEPARATOR \',\n\') as result from (select id_group, CONCAT(surname, \' \', name,\' \', middlename) as fio from users WHERE id_group > 0) as res group by id_group');
+        return View('group.index', compact(['users', 'groups']));
     }
 
     /**
@@ -46,8 +34,8 @@ class DisciplineController extends Controller
      */
     public function store(Request $request)
     {
-        Discipline::create($request->all());
-        return Redirect('discipline');
+        Group::create($request->all());
+        return Redirect('group');
     }
 
     /**

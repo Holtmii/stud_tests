@@ -38,7 +38,7 @@
 
 
 <div class="container">
-    @yield('main_content')
+    @yield('content')
 </div>
 
 {{--<script>--}}

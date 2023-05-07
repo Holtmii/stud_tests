@@ -2,6 +2,16 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-size: 16px;
+
+}
+
+body{
+    background-image: url(../images/bg2.png);
+    background-attachment:fixed;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-color: white;
 }
 
 .sidenav{
@@ -16,10 +26,116 @@
     word-wrap: break-word;
 }
 
-.navbar a:hover {
-    border-bottom: 3px solid blue;
-}
+/*.navbar a:hover {*/
+/*    border-bottom: 3px solid blue;*/
+/*}*/
 
 a.active {
     border-bottom: 3px solid red;
 }
+
+
+.btn-modal{
+    background-color: white;
+    border: 1px solid #48789e;
+    border-radius: 6px;
+    color: #48789e;
+    padding: 6px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    align-content: center;
+    margin-bottom: 3%;
+}
+
+
+
+
+.btn-modal:hover{
+    background-color: #48789e;
+    color: white;
+}
+
+th {
+    color: #48789e;
+    font-size: 18px;
+}
+
+
+
+.title {
+    text-align: center;
+    margin-top: 3%;
+    color: #2c3034;
+}
+
+.btn-centre{
+    text-align: center;
+}
+
+
+.input-class{
+    padding-bottom: 3%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+/*.form-control:focus{*/
+/*    border-color: gray;*/
+/*    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);*/
+/*}*/
+
+.img-size{
+    height: 30px;
+}
+
+.btn-img{
+    border: none;
+    background: none;
+    padding-top: 5px;
+}
+
+
+.btn-add{
+    border: none;
+    background-color: #48789e;
+    border-radius: 6px;
+    color: white;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    align-content: center;
+    margin-bottom: 3%;
+}
+
+
+.btn-add:hover {
+    background-color: #3c6485;
+    color: white;
+}
+
+
+.btn-cl{
+    border: none;
+    background-color: #E8C8B7;
+    border-radius: 6px;
+    color: white;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    align-content: center;
+    margin-bottom: 3%;
+}
+
+
+.check-color:focus{
+    background-color: red;
+}
+
+
+
