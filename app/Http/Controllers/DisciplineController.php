@@ -23,9 +23,11 @@ class DisciplineController extends Controller
             ->leftJoin('users', 'disciplines.id_user', '=', 'users.id')
             ->get();
 
+        $group_disciplines = DB::table('group__disciplines')->get();
+
         $groups = DB::table('groups')->get();
         $users = DB::table('users')->where('role_pers', '=', '1')->get();
-        return View('discipline.index', compact(['disciplines', 'users', 'groups']));
+        return View('discipline.index', compact(['disciplines', 'users', 'groups', 'group_disciplines']));
     }
 
     public function discipline_group(Request $request){

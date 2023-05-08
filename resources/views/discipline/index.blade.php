@@ -94,7 +94,6 @@
                                                 <option value="{{$group->id}}"> {{$group->name}} </option>
                                             @endforeach
                                         </select>
-
                                 </div>
 
 
@@ -114,6 +113,7 @@
                         <th class>Название</th>
                         <th>Описание</th>
                         <th>Преподаватель</th>
+                        <th>Группы</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -124,6 +124,15 @@
                             <td>{{$el->name}}</td>
                             <td>{{$el->description}}</td>
                             <td>{{$el->user_surname}} {{$el->user_name}} {{$el->user_middlename}}</td>
+                            <td>
+                            @foreach($group_disciplines as $group_discipline)
+                                @foreach($groups as $group)
+                                    @if($el->id == $group_discipline->id_discipline && $group_discipline->id_group == $group->id)
+                                        {{$group->name}}<br/>
+                                    @endif
+                                @endforeach
+                            @endforeach
+                            </td>
                             <td>
                                 <button type="button" class="btn-add" data-bs-toggle="modal" data-bs-target="#create-discipline_group">
                                     Добавить группу
