@@ -174,8 +174,6 @@
     <div class="col">
 {{--        <h1>Все пользователи</h1>--}}
 
-
-
         <div class="alert alert-light">
 
             <div class="col-sm-2">
@@ -185,7 +183,7 @@
                     @if( Request::exists('user_role') and app('request')->input('user_role') ==0)
                         <option value="0" selected>Студенты</option>
                     @else
-                        <option value="0" selected>Студенты</option>
+                        <option value="1" selected>Преподаватели</option>
                     @endif
                     <option value="0">Студенты</option>
                     <option value="1">Преподаватели</option>
@@ -195,7 +193,7 @@
             <br>
 
 
-
+<div class="tab-size" >
             <table class="table table-hover">
                 <tr>
                     <th>ФИО</th>
@@ -215,16 +213,22 @@
                         @endif
                         <td>{{$el->email}}</td>
                         <td>
-                            <button type="button" class="btn-img" data-bs-toggle="modal" data-bs-target="#edit-pers"><img class="img-size" src="/images/pen.png"></button>
-
+{{--                            <a href="{{ route('user_edit', $el->id) }}" class="btn-img"><img class="img-size" src="/images/pen.png"></a>--}}
+                            <button type="button" class="btn-img" onclick="location.href='{{ route('user_edit', $el->id) }}'"><img class="img-size" src="/images/pen.png"></button>
                         </td>
                         <td>
-                            <button type="button" class="btn-img"><img class="img-size" src="/images/delete.png"></button>
+                            <form method="POST" action="{{ route('destroy_user', $el->id) }}">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+{{--                                <a onclick="return confirm('Вы уверены что хотите удалить пользователя {{$el->surname}} {{$el->name}}  {{$el->middlename}}?')" class="btn-img"><img class="img-size" src="/images/delete.png"></a>--}}
+                                <button onclick="return confirm('Вы уверены что хотите удалить пользователя {{$el->surname}} {{$el->name}}  {{$el->middlename}}?')" type="submit" class="btn-img"><img class="img-size" src="/images/delete.png"></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
 
             </table>
+</div>
 
         </div>
     </div>

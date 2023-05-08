@@ -26,6 +26,13 @@ Route::post('/user', [App\Http\Controllers\MainController::class, 'user_create']
 
 Route::post('group_create', [App\Http\Controllers\MainController::class, 'group_create'] )->name('group_create');
 
+Route::delete('destroy_user/{id}', [App\Http\Controllers\MainController::class, 'destroy_user'] )->name('destroy_user');
+
+Route::get('user/edit/{id}', [App\Http\Controllers\MainController::class, 'user_edit'])->name('user_edit');
+
+Route::put('user/{user}', [App\Http\Controllers\MainController::class, 'user_update'])->name('user_update');
+Route::patch('user/{user}', [App\Http\Controllers\MainController::class, 'user_update'])->name('user_update');
+
 Route::resource('discipline', App\Http\Controllers\DisciplineController::class);
 
 Route::resource('subject_teach', App\Http\Controllers\SubjectTeachController::class);
