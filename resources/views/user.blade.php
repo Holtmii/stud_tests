@@ -11,24 +11,6 @@
 
 
 
-
-{{--        <div class="sidenav">--}}
-{{--            <label for="disabledSelect" class="col-form-label">Дисциплина</label>--}}
-{{--            <div class="col-sm-5 dis">--}}
-{{--                <select id="disabledSelect" name="id_group" class="form-control">--}}
-{{--                    @foreach($groups as $group)--}}
-{{--                        <option value="{{$group->id}}"> {{$group->name}} </option>--}}
-{{--                    @endforeach--}}
-{{--                </select>--}}
-{{--            </div>--}}
-
-{{--            <a href="#">Студенты</a><hr>--}}
-{{--            <a href="#">ПРеподы</a><hr>--}}
-{{--            <a href="#">gkdjngkdgdkgrkshgrkdghrdkrrgjndkgndkjgnjdknfdkggndkg</a><hr>--}}
-{{--        </div>--}}
-
-
-
         <div class="col">
             <h1 class="title">Список пользователей</h1>
             <div class="btn-centre">
@@ -37,10 +19,6 @@
                 </button>
             </div>
 
-
-{{--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#create-group">--}}
-{{--                Добавить группу--}}
-{{--            </button>--}}
 
             <!-- Modal -->
             <div class="modal fade" id="create-pers" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -72,28 +50,6 @@
                                         <input type="text" name="middlename" class="form-control bg-white" id="inputEmail3" placeholder="Введите отчество">
                                 </div>
 
-{{--                                <div class="form-group row">--}}
-{{--                                    <div class="col-sm-5">--}}
-{{--                                        <div class="form-check">--}}
-{{--                                            <input name="role_pers" type="checkbox" value="1" id="gridCheck1"--}}
-{{--                                                   onclick="document.getElementById('groupId').value = 'null';--}}
-{{--                                                            document.getElementById('groupId').disabled = !document.getElementById('groupId').disabled;">--}}
-{{--                                            <label for="gridCheck1">--}}
-{{--                                                Преподаватель--}}
-{{--                                            </label>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-
-{{--                                    <label for="disabledSelect" class="col-sm-2 col-form-label">Группа</label>--}}
-{{--                                    <div class="col-sm-5">--}}
-{{--                                        <select id="groupId" name="id_group" class="form-control">--}}
-{{--                                                <option value='null' selected>Выберите группу</option>--}}
-{{--                                            @foreach($groups as $group)--}}
-{{--                                                <option value="{{$group->id}}"> {{$group->name}} </option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
 
                                 <div class="form-group input-class">
                                     <input name="role_pers" type="checkbox" value="1" id="gridCheck1" class="check-color"
@@ -193,7 +149,7 @@
             <br>
 
 
-<div class="tab-size" >
+<div class="alert alert-light">
             <table class="table table-hover">
                 <tr>
                     <th>ФИО</th>

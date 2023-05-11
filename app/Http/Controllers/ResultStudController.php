@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Discipline;
-use App\Models\Subject;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class SubjectTeachController extends Controller
+class ResultStudController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +14,20 @@ class SubjectTeachController extends Controller
     public function index(Request $request)
     {
         if($request->query('discipline') != null)
-            $subjects = DB::table('subjects')->where('id_discipline', $request->query('discipline'))->get();
+            $subjects = DB::table('subjects')
+                ->leftJoin('group__disciplines', 'group__disciplines.id_discipline', '=', 'subjects.id_discipline')
+                ->where('subjects.id_discipline', $request->query('discipline'))
+                ->get();
         else
-            $subjects = DB::table('subjects')->get();
+            $subjects = DB::table('subjects')
+                ->leftJoin('group__disciplines', 'group__disciplines.id_discipline', '=', 'subjects.id_discipline')
+                ->get();
+
         $disciplines = DB::table('disciplines')->get();
-        return View('subject_teach.index', compact('subjects'), compact('disciplines'));
+        $group = DB::table('groups')->where('id', Auth::user()->id_group)->get();
+        $group_disciplines = DB::table('group__disciplines')->get();
+        $results = DB::table('results')->get();
+        return View('result_stud.index', compact(['subjects', 'disciplines', 'group', 'group_disciplines', 'results']));
     }
 
     /**
@@ -35,9 +43,7 @@ class SubjectTeachController extends Controller
      */
     public function store(Request $request)
     {
-        $request->query('discipline') == null ? $request->merge(["id_discipline"=>"1"]) : $request->merge(["id_discipline"=>$request->query('discipline')]);
-        Subject::create($request->all());
-        return $this->index($request);
+        //
     }
 
     /**
@@ -45,9 +51,7 @@ class SubjectTeachController extends Controller
      */
     public function show(string $id)
     {
-        $subjects = DB::table('subjects')->where('id_discipline', $id)->get();
-        $disciplines = DB::table('disciplines')->get();
-        return View('subject_teach.index', compact('subjects'), compact('disciplines'));
+        //
     }
 
     /**

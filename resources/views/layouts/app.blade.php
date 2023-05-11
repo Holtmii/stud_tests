@@ -24,6 +24,7 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body class="bg-white">
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -44,10 +45,10 @@
                             <a class="me-3 py-2 text-dark text-decoration-none" href="/group">Группы</a>
                         @elseif(Auth::check() and (Auth::user()->role_superuser==0) AND (Auth::user()->role_pers==1))
                             <a class="me-3 py-2 text-dark text-decoration-none" href="/subject_teach">Дисциплины</a>
-                            <a class="me-3 py-2 text-dark text-decoration-none" href="/">Результаты</a>
+                            <a class="me-3 py-2 text-dark text-decoration-none" href="/result_teach">Результаты</a>
                         @elseif(Auth::check() and (Auth::user()->role_superuser==0) AND (Auth::user()->role_pers==0))
-                            <a class="me-3 py-2 text-dark text-decoration-none" href="/">Тесты</a>
-                            <a class="me-3 py-2 text-dark text-decoration-none" href="/">Результаты</a>
+                            <a class="me-3 py-2 text-dark text-decoration-none" href="/subject_stud">Тесты</a>
+                            <a class="me-3 py-2 text-dark text-decoration-none" href="/result_stud">Результаты</a>
                         @endif
                         @if (Auth::check())
                             <a class="me-3 py-2 text-dark text-decoration-none" href="/">Личный кабинет</a>
@@ -93,9 +94,13 @@
             </div>
         </nav>
 
+
+
+
         <div class="container">
             @yield('content')
         </div>
     </div>
+    @yield('scripts')
 </body>
 </html>

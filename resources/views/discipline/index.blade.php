@@ -5,7 +5,6 @@
 Преподаватели
 @endsection
 
-
 @section('content')
 
 
@@ -96,6 +95,10 @@
                                         </select>
                                 </div>
 
+                                <div class="form-group input-class" style="display: none">
+                                    <input id="id_discipline" name="id_discipline" class="form-control bg-white">
+                                </div>
+
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn-cl" data-bs-dismiss="modal">Отмена</button>
@@ -134,7 +137,7 @@
                             @endforeach
                             </td>
                             <td>
-                                <button type="button" class="btn-add" data-bs-toggle="modal" data-bs-target="#create-discipline_group">
+                                <button type="button" onclick="document.getElementById('id_discipline').value = {{$el->id}}" class="btn-add" data-bs-toggle="modal" data-bs-target="#create-discipline_group">
                                     Добавить группу
                                 </button>
                             </td>

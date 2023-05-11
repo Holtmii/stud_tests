@@ -3,7 +3,6 @@
     padding: 0;
     box-sizing: border-box;
     font-size: 16px;
-
 }
 
 body{
@@ -94,6 +93,8 @@ th {
     border: none;
     background: none;
     padding-top: 5px;
+    padding-right: 2%;
+    padding-left: 2%;
 }
 
 
@@ -139,9 +140,123 @@ th {
 
 .tab-size{
     width: 70%;
+}
 
-
+.wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+.block {
+    margin-left: 4px;
 }
 
 
+.subject-list {
+    border: solid #e8c8b731 5px;
+    border-radius: 6px;
+    color: black;
+    text-align: center;
+    align-content: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: 6%;
+    margin-bottom: 3%;
+    word-wrap: break-word;
+}
+
+
+.subject-list:hover{
+    background-color: #e8c8b731;
+
+}
+
+.disc-block{
+    margin-top: 10%;
+}
+
+
+.btn-more{
+    border: solid #48789e 1px;
+    background-color: #48789e;
+    border-radius: 6px;
+    color: white;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    align-content: center;
+    margin-bottom: 3%;
+}
+
+
+.btn-more:hover {
+    background-color: white;
+    color: #48789e;
+    border: solid #48789e 1px;
+
+}
+
+.question-wrap{
+    background-color: #48789e20;
+    padding: 1% 3% 1% 3%;
+    border-radius: 6px;
+    margin-bottom: 3%;
+}
+
+
+.snav-wrap{
+    border: solid #e8c8b731;
+    border-radius: 6px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+.nav-wrapper {
+    display: flex;
+    justify-content: left;
+    margin-bottom: 3%;
+}
+
+.nav-marg{
+    margin-right: 10%;
+}
+
+
+.text-dec{
+    text-decoration: none;
+    cursor: pointer;
+    color: #48789e;
+    font-size: 20px;
+}
+
+
+.title-stud{
+    text-align: center;
+    margin-top: 3%;
+    color: #2c3034;
+    margin-bottom: 3%;
+}
+
+
+.select-disc{
+    margin-bottom: 3%;
+}
+
+.form-control-ans{
+    /*display: block;*/
+    margin-right: 2%;
+    padding: 0.375rem 0.75rem;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #212529;
+    background-color: #f8fafc;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    appearance: none;
+    border-radius: 0.375rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 

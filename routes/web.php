@@ -46,3 +46,15 @@ Route::resource('group', App\Http\Controllers\GroupController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/result_teach', [App\Http\Controllers\ResultController::class, 'index'])->name('result_teach');
+
+Route::get('/question/{id}', [App\Http\Controllers\QuestionController::class, 'index'])->name('question');
+
+Route::post('/question', [App\Http\Controllers\QuestionController::class, 'store'])->name('question_store');
+
+Route::resource('subject_stud', App\Http\Controllers\SubjectStudController::class);
+
+Route::resource('result_stud', App\Http\Controllers\ResultStudController::class);
+
+Route::get('/test/{id}', [App\Http\Controllers\TestController::class, 'index'])->name('test');
