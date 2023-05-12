@@ -7,6 +7,7 @@ use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class SubjectStudController extends Controller
 {
@@ -15,19 +16,20 @@ class SubjectStudController extends Controller
      */
     public function index(Request $request)
     {
+        \session()->forget(['first', 'solved']);
         if($request->query('discipline') != null)
             $subjects = DB::table('subjects')
-                ->leftJoin('group__disciplines', 'group__disciplines.id_discipline', '=', 'subjects.id_discipline')
+                ->leftJoin('group_disciplines', 'group_disciplines.id_discipline', '=', 'subjects.id_discipline')
                 ->where('subjects.id_discipline', $request->query('discipline'))
                 ->get();
         else
             $subjects = DB::table('subjects')
-                ->leftJoin('group__disciplines', 'group__disciplines.id_discipline', '=', 'subjects.id_discipline')
+                ->leftJoin('group_disciplines', 'group_disciplines.id_discipline', '=', 'subjects.id_discipline')
                 ->get();
 
         $disciplines = DB::table('disciplines')->get();
         $group = DB::table('groups')->where('id', Auth::user()->id_group)->get();
-        $group_disciplines = DB::table('group__disciplines')->get();
+        $group_disciplines = DB::table('group_disciplines')->get();
         return View('subject_stud.index', compact(['subjects', 'disciplines', 'group', 'group_disciplines']));
     }
 
